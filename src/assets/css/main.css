@@ -1,0 +1,26 @@
+
+/* Base */
+@import 'basics/base.css';
+@import 'basics/helpers.css';
+@import 'basics/layout.css';
+@import 'basics/forms.css';
+
+/* Cmps */
+@import 'cmps/AppHeader.css';
+@import 'cmps/LoginSignup.css';
+
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app > * {
+    width: 100%;
+}
+
+main {
+    flex-grow: 1;
+   
+}
