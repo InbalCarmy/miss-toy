@@ -20,7 +20,7 @@ export function AppHeader() {
 
         <header className="app-header">
             <section className="header-container">
-                <h1>Toys</h1>
+                <h2>Toys</h2>
                 <nav className='app-nav'>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='About'>About</NavLink>
@@ -28,8 +28,8 @@ export function AppHeader() {
                 </nav>
             </section>
             {user ? (
-                <section>
-                    <span>Hello {user.fullname}</span>
+                <section className='hello-user'>
+                    <span>Hello {user.fullname}!</span>
                     <button onClick={onLogout}>Logout</button>
 
                 </section>

@@ -5,6 +5,7 @@ import './assets/css/main.css'
 
 import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'
+import { ToyIndex } from './pages/ToyIndex'
 
 
 
@@ -17,11 +18,11 @@ function App() {
           <main className='main-layout'>
               <Routes>
                   <Route element={<HomePage />} path="/" />
-                  {/* <Route element={<AboutUs />} path="/about" />
-                  <Route element={<CarIndex />} path="/car" />
-                  <Route element={<CarEdit />} path="/car/edit" />
-                  <Route element={<CarEdit />} path="/car/edit/:carId" />
-                  <Route element={<CarDetails />} path="/car/:carId" /> */}
+                  {/* <Route element={<AboutUs />} path="/about" /> */}
+                  <Route element={<ToyIndex />} path="/toy" />
+                  {/* <Route element={<CarEdit />} path="/car/edit" /> */}
+                  {/* <Route element={<CarEdit />} path="/car/edit/:carId" /> */}
+                  {/* <Route element={<CarDetails />} path="/car/:carId" /> */}
               </Routes>
           </main>
       </section>

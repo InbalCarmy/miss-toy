@@ -9,6 +9,8 @@ html {
 body {
   margin: 0;
   color: var(--gray3);
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+
 }
 
 h1,
@@ -21,6 +23,13 @@ h6 {
   font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
+h1{
+  font-size: 2rem;
+}
+
+h2{
+  font-size: 2.5rem;
+}
 p {
   margin: 0 0 1em;
 }

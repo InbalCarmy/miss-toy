@@ -1,7 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
-export const robotService = {
+export const toyService = {
     query,
     save,
     remove,
@@ -15,17 +15,35 @@ const STORAGE_KEY = 'toys'
 _createToys()
 
 
+// function query(filterBy) {
+//     return storageService.query(STORAGE_KEY)
+//         .then(toys => {
+//             if (filterBy) {
+//                 let {name = '', inStock = '' } = filterBy
+//                 toys = toys.filter(toy =>
+//                     toy.name.toLowerCase().includes(name.toLowerCase()) &&
+//                     toy.inStock === inStock
+//                 )
+//             }
+//             return toys
+//         })
+//         .catch(error => {
+//             console.log('error:', error)
+//             throw error
+//         })
+// }
+
 function query(filterBy) {
     return storageService.query(STORAGE_KEY)
         .then(toys => {
-            if (filterBy) {
-                let { minBatteryStatus, model = '', type = '' } = filterBy
-                minBatteryStatus = minBatteryStatus || 0
-                toys = toys.filter(robot =>
-                    robot.type.toLowerCase().includes(type.toLowerCase()) &&
-                    robot.model.toLowerCase().includes(model.toLowerCase()) &&
-                    robot.batteryStatus >= minBatteryStatus
+            if (filterBy.name) {
+                toys = toys.filter(toy =>
+                    toy.name.toLowerCase().includes(name.toLowerCase()) 
                 )
+            }
+            if(filterBy.inStock){
+                if(filterBy.inStock === 'inStock') toys = toys.filter(toy => toy.inStock)
+                else if (filterBy.id ==='notInStock') toys =toys.filter(toy => !toy.inStock)
             }
             return toys
         })
@@ -63,9 +81,8 @@ function createToy(name = '', price = 100, inStock = false) {
 
 function getDefaultFilter() {
     return {
-        type: '',
-        minBatteryStatus: 0,
-        model: ''
+        name: '',
+        inStock: true
     }
 }
 

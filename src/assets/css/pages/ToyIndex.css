@@ -1,0 +1,6 @@
+.toy-index{
+    color: #3C3C3C;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 20px;
+}

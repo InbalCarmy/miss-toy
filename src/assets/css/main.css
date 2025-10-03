@@ -1,3 +1,6 @@
+/* Setup */
+@import 'setup/typograghy.css';
+
 
 /* Base */
 @import 'basics/base.css';
@@ -8,6 +11,11 @@
 /* Cmps */
 @import 'cmps/AppHeader.css';
 @import 'cmps/LoginSignup.css';
+@import 'cmps/ToyFilter.css';
+@import 'cmps/ToyList.css';
+
+/* Pages */
+@import 'pages/ToyIndex.css';
 
 
 .app {

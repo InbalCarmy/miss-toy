@@ -1,0 +1,21 @@
+
+.toy-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-block: 1em;
+    list-style: none;
+    padding-left: 0;
+}
+
+.toy-list li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #B5FFFC;
+    padding: 1em;
+    border-radius: 7px;
+    width: 250px;
+    height: 300px;
+    box-sizing: border-box;
+}
