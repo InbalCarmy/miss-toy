@@ -58,7 +58,7 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
                 </select>
             </section> */}
 
-            <section>
+            <section className="label-filter">
                 <label>Filter by labels:</label>
                 <div className="filter-checkbox-group">
                     {labels.map(lbl => (

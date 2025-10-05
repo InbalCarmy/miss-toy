@@ -2,9 +2,17 @@
 
 .toy-filter{
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .filter-checkbox-group{
     display: flex;
     gap: 40px;
+}
+
+.label-filter{
+    display: flex;
+    gap: 20px;
 }

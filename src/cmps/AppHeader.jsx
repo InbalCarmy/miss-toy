@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom'
 import { logout } from '../store/user/user.actions.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { LoginSignup } from './LoginSignup.jsx'
+import { useOnlineStatus } from '../customHooks/useOnlineStatus.js'
 
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
+    const isOnline = useOnlineStatus()
 
     function onLogout() {
         logout()
@@ -38,6 +40,10 @@ export function AppHeader() {
                     <LoginSignup/>
                 </section>
             )}
+            <section className='online-display'>
+                <p>{isOnline ? '✅ Online' : '❌ Disconnected'}</p>
+
+            </section>
         </header>
 
 

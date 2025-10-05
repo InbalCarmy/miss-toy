@@ -24,3 +24,7 @@
 .hello-user{
     align-self: center;
 }
+
+.online-display{
+    padding-inline-start: 1em;
+}
