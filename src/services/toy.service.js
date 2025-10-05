@@ -20,12 +20,19 @@ function query(filterBy) {
         .then(toys => {
             if (filterBy.name) {
                 toys = toys.filter(toy =>
-                    toy.name.toLowerCase().includes(name.toLowerCase()) 
+                    toy.name.toLowerCase().includes(filterBy.name.toLowerCase()) 
                 )
             }
             if(filterBy.inStock){
                 if(filterBy.inStock === 'inStock') toys = toys.filter(toy => toy.inStock)
-                else if (filterBy.id ==='notInStock') toys =toys.filter(toy => !toy.inStock)
+                else if (filterBy.inStock ==='notInStock') toys =toys.filter(toy => !toy.inStock)
+            }
+            // if(filterBy.label){
+            //     toys= toys.filter(toy => toy.labels.includes(filterBy.label))
+            // }
+
+            if(filterBy.labels && Array.isArray(filterBy.labels) && filterBy.labels.length > 0){
+                toys = toys.filter(toy => filterBy.labels.some(lbl => toy.labels.includes(lbl)))
             }
             return toys
         })
@@ -57,18 +64,20 @@ function save(toyToSave) {
 }
 
 
-function createToy(name = '', price = 100, inStock = false) {
+function createToy(name = '', price = 100, inStock = false, labels =[]) {
     return {
         name,
         price,
-        inStock
+        inStock,
+        labels
     }
 }
 
 function getDefaultFilter() {
     return {
         name: '',
-        inStock: true
+        inStock: true,
+        labels: []
     }
 }
 
