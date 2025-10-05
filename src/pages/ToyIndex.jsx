@@ -17,12 +17,13 @@ export function ToyIndex() {
 
     useEffect(() => {
         setFilterBy(toyService.getFilterFromSearchParams(searchParams))
-
     }, [])
 
     useEffect(() => {
         loadToys()
         setSearchParams(getExistingProperties(filterBy))
+        console.log("filterBy: ", filterBy);
+        
     },[filterBy])
 
         
@@ -36,12 +37,12 @@ export function ToyIndex() {
         .catch(()=> showErrorMsg(`Having issues removing Toy (${toyId})`))
     }
 
-    const {name, inStock, labels} = filterBy
+    const {name, inStock, labels, sortBy} = filterBy
     return(
         <section className="toy-index">
             <h1>Welcome! this is our toys:</h1>
             <main>
-                <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, inStock, labels}}/>
+                <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, inStock, labels, sortBy}}/>
                 <Link className="add-link" to='/toy/edit'>Add Toy</Link>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
                 <Outlet />

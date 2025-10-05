@@ -1,25 +1,39 @@
-.user-msg {
+/* .user-msg {
     background-color: lightgray;
     padding: .5em 1em;
     position: fixed;
-    bottom: 1em;
+    top: 1em;
     right: 1em;
     color: white;
     font-weight: bold;
     border: 3px solid black;
     border-radius: 2px;
+} */
+
+.user-msg {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: inline-block;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease-in-out;
+    width: fit-content;
+    max-width: 300px;
 }
 
 .user-msg.success {
-    background-color: var(--clr1);
+    background-color: #d4f4dd;
 }
 
 .user-msg.error {
-    background-color: var(--clr2);
+    background-color: #ffe0e6;
 }
 
 
 .user-msg button{
-    float: right;
+    /* float: right; */
     margin: 1em;
 }

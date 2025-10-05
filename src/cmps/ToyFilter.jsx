@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { debounce } from "../services/util.service.js"
 
-
-
-
 export function ToyFilter({ filterBy, onSetFilterBy}){
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const onSetFilterByDebounce = useRef(debounce(onSetFilterBy, 400)).current
@@ -16,7 +13,6 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
-
         if (target.multiple) {
         value = Array.from(target.selectedOptions, opt => opt.value)
         } else {
@@ -27,8 +23,9 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
         setFilterByToEdit(prev => ({ ...prev, [field]: value }))
     }
 
+
     const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
-    const {name, inStock, labels: selectedLabels} = filterByToEdit
+    const {name, inStock, labels: selectedLabels, sortBy} = filterByToEdit
     return(
         <form className="toy-filter">
             <section>
@@ -82,6 +79,16 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
                         </label>
                     ))}
                 </div>
+            </section>
+
+            <section>
+                <label htmlFor="sort">Sort by: </label>
+                <select onChange={handleChange} value={sortBy || ''} id="sortBy" name="sortBy" >
+                    <option value="">None</option>
+                    <option value="name">Name</option>
+                    <option value="price">Price</option>
+                    <option value="created">Created</option>
+                </select>
             </section>
             
             <section>

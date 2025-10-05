@@ -30,6 +30,20 @@ function query(filterBy) {
             if(filterBy.labels && Array.isArray(filterBy.labels) && filterBy.labels.length > 0){
                 toys = toys.filter(toy => filterBy.labels.every(lbl => toy.labels.includes(lbl)))
             }
+
+            if(filterBy.sortBy) {
+                switch(filterBy.sortBy){
+                    case 'name':
+                        toys.sort((a,b) => a.name.localeCompare(b.name))
+                        break
+                    case 'price':
+                        toys.sort((a, b) => a.price - b.price)
+                        break
+                    case 'created' :
+                        toys.sort((a,b) => a.createdAt - b.createdAt)
+                        break
+                }
+            }
             return toys
         })
         .catch(error => {
@@ -73,15 +87,20 @@ function getDefaultFilter() {
     return {
         name: '',
         inStock: '',
-        labels: []
+        labels: [],
+        sortBy: ''
     }
 }
+
 
 // function getFilterFromSearchParams(searchParams) {
 //     const name = searchParams.get('name') || ''
 //     const inStock = searchParams.get('inStock') || ''
-//     const labels = searchParams.get('labels') ? [searchParams.get('labels')] : []
-//     return { name, inStock, labels }
+//     const sortBy = searchParams.get('sortBy') || ''
+//     const labelsParam = searchParams.get('labels')
+//     const labels = labelsParam ? labelsParam.split(',') : []
+    
+//     return { name, inStock, labels, sortBy }
 // }
 
 function getFilterFromSearchParams(searchParams) {
