@@ -36,12 +36,12 @@ export function ToyIndex() {
         .catch(()=> showErrorMsg(`Having issues removing Toy (${toyId})`))
     }
 
-    const {name, inStock} = filterBy
+    const {name, inStock, labels} = filterBy
     return(
         <section className="toy-index">
             <h1>Welcome! this is our toys:</h1>
             <main>
-                <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, inStock}}/>
+                <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, inStock, labels}}/>
                 <Link className="add-link" to='/toy/edit'>Add Toy</Link>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
                 <Outlet />

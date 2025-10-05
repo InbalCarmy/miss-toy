@@ -11,22 +11,6 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
     useEffect(() => {
         onSetFilterByDebounce(filterByToEdit)
     }, [filterByToEdit])
-
-    // function handleChange({ target }) {
-    //     let { name: field, value, type } = target
-    //     switch (type) {
-    //         case 'number':
-    //         case 'range':
-    //             value = +value
-    //             break;
-    //         case 'checkbox':
-    //             value = target.checked
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
-    // }
     
 
     function handleChange({ target }) {
@@ -56,19 +40,12 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
                 <label htmlFor="inStick">Is The Toy In Stock ? </label>
                 <select onChange={handleChange} value={inStock || ''} id="inStock" name="inStock" >
                     <option value="">All</option>
-                    <option value="inStock">In Stock</option>
-                    <option value="notInStock">Not In Stock</option>
+                    <option value="true">In Stock</option>
+                    <option value="false">Not In Stock</option>
                 </select>
             </section>
-
+{/* 
             <section>
-                {/* <label htmlFor="label">Filter by label: </label>
-                <select  onChange={handleChange} value={filterByToEdit.label || ''} id="label" name="label" >
-                    <option value="">All labels</option>
-                    {labels.map(lbl => (
-                        <option key={lbl} value={lbl}>{lbl}</option>
-                    ))}
-                </select> */}
                 <label htmlFor="labels">Filter by labels (hold Ctrl/Cmd to select multiple): </label>
                 <select 
                 onChange={handleChange} 
@@ -82,6 +59,29 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
                     <option key={lbl} value={lbl}>{lbl}</option>
                 ))}
                 </select>
+            </section> */}
+
+            <section>
+                <label>Filter by labels:</label>
+                <div className="filter-checkbox-group">
+                    {labels.map(lbl => (
+                        <label key={lbl} className="checkbox-label">
+                            <input 
+                                type="checkbox" 
+                                value={lbl}
+                                checked={selectedLabels?.includes(lbl) || false}
+                                onChange={(e) => {
+                                    const isChecked = e.target.checked
+                                    const newLabels = isChecked 
+                                        ? [...(selectedLabels || []), lbl]
+                                        : (selectedLabels || []).filter(l => l !== lbl)
+                                    setFilterByToEdit(prev => ({...prev, labels: newLabels}))
+                                }}
+                            />
+                            {lbl}
+                        </label>
+                    ))}
+                </div>
             </section>
             
             <section>

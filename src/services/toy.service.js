@@ -24,15 +24,11 @@ function query(filterBy) {
                 )
             }
             if(filterBy.inStock){
-                if(filterBy.inStock === 'inStock') toys = toys.filter(toy => toy.inStock)
-                else if (filterBy.inStock ==='notInStock') toys =toys.filter(toy => !toy.inStock)
+                if(filterBy.inStock === 'true') toys = toys.filter(toy => toy.inStock)
+                else if (filterBy.inStock ==='false') toys =toys.filter(toy => !toy.inStock)
             }
-            // if(filterBy.label){
-            //     toys= toys.filter(toy => toy.labels.includes(filterBy.label))
-            // }
-
             if(filterBy.labels && Array.isArray(filterBy.labels) && filterBy.labels.length > 0){
-                toys = toys.filter(toy => filterBy.labels.some(lbl => toy.labels.includes(lbl)))
+                toys = toys.filter(toy => filterBy.labels.every(lbl => toy.labels.includes(lbl)))
             }
             return toys
         })
@@ -76,10 +72,17 @@ function createToy(name = '', price = 100, inStock = false, labels =[]) {
 function getDefaultFilter() {
     return {
         name: '',
-        inStock: true,
+        inStock: '',
         labels: []
     }
 }
+
+// function getFilterFromSearchParams(searchParams) {
+//     const name = searchParams.get('name') || ''
+//     const inStock = searchParams.get('inStock') || ''
+//     const labels = searchParams.get('labels') ? [searchParams.get('labels')] : []
+//     return { name, inStock, labels }
+// }
 
 function getFilterFromSearchParams(searchParams) {
     const defaultFilter = getDefaultFilter()

@@ -3,3 +3,8 @@
 .toy-filter{
     padding: 1em;
 }
+
+.filter-checkbox-group{
+    display: flex;
+    gap: 40px;
+}
