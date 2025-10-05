@@ -1,0 +1,49 @@
+
+
+.toy-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 400px;
+    aspect-ratio: 1;
+    top: -10%;
+    border-radius: 10px;
+
+    position: fixed;
+    inset: 0;
+    top: -10%;
+    margin: auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffd6a5 0%, #bee1e6 100%);
+    box-shadow:
+        0 0 0 100vmax rgba(0, 0, 0, 0.3),
+        -3px 1px 28px #00000043;
+
+}
+
+.toy-edit .close-btn{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.toy-edit h1{
+    font-size: 1.3rem;
+}
+
+.toy-edit form{
+    width: 80%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.toy-edit label{
+    margin-top: 20px;
+}
+
+.toy-edit form button{
+    margin-top:  20px;
+}

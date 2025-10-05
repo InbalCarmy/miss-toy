@@ -6,6 +6,7 @@ import './assets/css/main.css'
 import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'
 import { ToyIndex } from './pages/ToyIndex'
+import { ToyEdit } from './pages/ToyEdit'
 
 
 
@@ -19,9 +20,10 @@ function App() {
               <Routes>
                   <Route element={<HomePage />} path="/" />
                   {/* <Route element={<AboutUs />} path="/about" /> */}
-                  <Route element={<ToyIndex />} path="/toy" />
-                  {/* <Route element={<CarEdit />} path="/car/edit" /> */}
-                  {/* <Route element={<CarEdit />} path="/car/edit/:carId" /> */}
+                  <Route path="/toy" element={<ToyIndex />}>
+                      <Route path="edit" element={<ToyEdit />} />
+                      <Route path="edit/:toyId" element={<ToyEdit />} />
+                  </Route>
                   {/* <Route element={<CarDetails />} path="/car/:carId" /> */}
               </Routes>
           </main>

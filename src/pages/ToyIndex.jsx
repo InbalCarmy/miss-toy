@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { loadToys, setFilterBy } from "../store/toy/toy.actions";
-import { useSearchParams } from "react-router-dom";
+import { loadToys, setFilterBy, removeToy } from "../store/toy/toy.actions";
+import { useSearchParams, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toyService } from "../services/toy.service";
 import { getExistingProperties } from "../services/util.service";
@@ -31,7 +31,7 @@ export function ToyIndex() {
     }
 
     function onRemoveToy(toyId){
-        onRemoveToy(toyId)
+        removeToy(toyId)
         .then(() => showSuccessMsg('Toy Was Removed!'))
         .catch(()=> showErrorMsg(`Having issues removing Toy (${toyId})`))
     }
@@ -39,10 +39,11 @@ export function ToyIndex() {
     const {name, inStock} = filterBy
     return(
         <section className="toy-index">
-            <h1>Welcome! this is out toys:</h1>
+            <h1>Welcome! this is our toys:</h1>
             <main>
                 <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, inStock}}/>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
+                <Outlet />
             </main>
 
         </section>

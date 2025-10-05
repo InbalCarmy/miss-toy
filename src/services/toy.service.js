@@ -15,24 +15,6 @@ const STORAGE_KEY = 'toys'
 _createToys()
 
 
-// function query(filterBy) {
-//     return storageService.query(STORAGE_KEY)
-//         .then(toys => {
-//             if (filterBy) {
-//                 let {name = '', inStock = '' } = filterBy
-//                 toys = toys.filter(toy =>
-//                     toy.name.toLowerCase().includes(name.toLowerCase()) &&
-//                     toy.inStock === inStock
-//                 )
-//             }
-//             return toys
-//         })
-//         .catch(error => {
-//             console.log('error:', error)
-//             throw error
-//         })
-// }
-
 function query(filterBy) {
     return storageService.query(STORAGE_KEY)
         .then(toys => {
@@ -62,7 +44,7 @@ function remove(id) {
 }
 
 function save(toyToSave) {
-    if (toyToSave.id) {
+    if (toyToSave._id) {
         return storageService.put(STORAGE_KEY, toyToSave)
     } else {
         toyToSave.isOn = false

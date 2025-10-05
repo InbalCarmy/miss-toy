@@ -9,7 +9,7 @@ export function ToyPreview({toy}){
                 {toy.inStock ? (
                     <p>In Stock!</p>
                 ) : (
-                    <p> is Not In Stock</p>
+                    <p>Not In Stock</p>
                 )}
                 <p>price: {toy.price}</p>
             </Link>
