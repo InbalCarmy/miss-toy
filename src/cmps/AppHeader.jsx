@@ -20,7 +20,7 @@ export function AppHeader() {
 
         <header className="app-header">
             <section className="header-container">
-                <h2>Toys</h2>
+                <h2>Miss Toys</h2>
                 <nav className='app-nav'>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='About'>About</NavLink>

@@ -1,0 +1,20 @@
+
+
+.toy-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toy-details >* {
+    margin-top: 10px;
+}
+
+.toy-details div{
+    display: flex;
+    gap:40px ;
+}
+
+.toy-details .link:hover{
+    text-decoration: underline;
+}

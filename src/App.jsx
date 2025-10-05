@@ -7,6 +7,8 @@ import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'
 import { ToyIndex } from './pages/ToyIndex'
 import { ToyEdit } from './pages/ToyEdit'
+import {UserMsg} from './cmps/UserMsg'
+import { ToyDetails } from './pages/toyDetails'
 
 
 
@@ -24,13 +26,12 @@ function App() {
                       <Route path="edit" element={<ToyEdit />} />
                       <Route path="edit/:toyId" element={<ToyEdit />} />
                   </Route>
-                  {/* <Route element={<CarDetails />} path="/car/:carId" /> */}
+                  <Route element={<ToyDetails />} path="/toy/:toyId" />
               </Routes>
           </main>
-      </section>
-      
-      
+          <UserMsg />
 
+      </section>
     </Router>
   )
 }

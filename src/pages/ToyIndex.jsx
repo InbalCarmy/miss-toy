@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { loadToys, setFilterBy, removeToy } from "../store/toy/toy.actions";
-import { useSearchParams, Outlet } from "react-router-dom";
+import { Link, useSearchParams, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toyService } from "../services/toy.service";
 import { getExistingProperties } from "../services/util.service";
@@ -42,6 +42,7 @@ export function ToyIndex() {
             <h1>Welcome! this is our toys:</h1>
             <main>
                 <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, inStock}}/>
+                <Link className="add-link" to='/toy/edit'>Add Toy</Link>
                 <ToyList toys={toys} onRemoveToy={onRemoveToy} />
                 <Outlet />
             </main>

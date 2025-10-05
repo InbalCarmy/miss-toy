@@ -4,3 +4,11 @@
     flex-direction: column;
     padding-inline: 20px;
 }
+
+.add-link{
+        padding: 1em;
+}
+
+.add-link:hover{
+    text-decoration: underline;
+}

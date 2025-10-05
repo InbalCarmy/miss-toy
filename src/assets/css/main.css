@@ -14,10 +14,13 @@
 @import 'cmps/ToyFilter.css';
 @import 'cmps/ToyList.css';
 @import 'cmps/UserMsg.css';
+@import 'cmps/ToyPreview.css';
+
 
 /* Pages */
 @import 'pages/ToyIndex.css';
 @import 'pages/ToyEdit.css';
+@import 'pages/ToyDetails.css';
 
 
 .app {

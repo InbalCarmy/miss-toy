@@ -4,7 +4,7 @@ export function ToyPreview({toy}){
 
     return(
         <article className="toy-preview">
-            <Link to={`/toy/$toy._id`}>
+            <Link to={`/toy/${toy._id}`}>
                 <h1>{toy.name}</h1>
                 {toy.inStock ? (
                     <p>In Stock!</p>

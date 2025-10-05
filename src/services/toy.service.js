@@ -37,6 +37,10 @@ function query(filterBy) {
 
 function getById(id) {
     return storageService.get(STORAGE_KEY, id)
+    .then(toy => {
+        toy = _setNextPrevToyId(toy)
+        return toy
+    })
 }
 
 function remove(id) {
@@ -104,4 +108,16 @@ function _createToys() {
         ]
         utilService.saveToStorage(STORAGE_KEY, toys)
     }
+}
+
+function _setNextPrevToyId(toy){
+    return storageService.query(STORAGE_KEY)
+    .then((toys) => {
+    const toyIdx = toys.findIndex((currToy) => currToy._id === toy._id)
+    const nextToy = toys[toyIdx + 1] ? toys[toyIdx + 1] : toys[0]
+    const prevToy = toys[toyIdx - 1] ? toys[toyIdx - 1] : toys[toys.length - 1]
+    toy.nextToyId = nextToy._id
+    toy.prevToyId = prevToy._id
+    return toy
+})
 }
