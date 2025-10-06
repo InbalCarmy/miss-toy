@@ -17,14 +17,17 @@ export function ToyIndex() {
 
     useEffect(() => {
         const URLfilter = toyService.getFilterFromSearchParams(searchParams)
-        console.log('filterURL: ',URLfilter)
+        // console.log('filterURL: ',URLfilter)
         setFilterBy(URLfilter)
     }, [])
 
     useEffect(() => {
         loadToys()
+        console.log('before:',getExistingProperties(filterBy));
+        console.log("before filterBy: ", filterBy);
         setSearchParams(getExistingProperties(filterBy))
-        console.log("filterBy to the params: ", filterBy);
+        console.log("after filterBy: ", filterBy);
+        console.log('after:', getExistingProperties(filterBy));
     },[filterBy])
 
         

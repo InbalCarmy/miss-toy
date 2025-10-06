@@ -14,7 +14,12 @@ export function AppHeader() {
     function onLogout() {
         logout()
             .then(() => showSuccessMsg('Bye Bye'))
-            .catch(() => showErrorMsg('Cannot logout'))
+            .catch((err) =>{ 
+                console.log("can't logout, error:", err) ;
+                
+                showErrorMsg('Cannot logout')
+
+            })
     }
 
 
