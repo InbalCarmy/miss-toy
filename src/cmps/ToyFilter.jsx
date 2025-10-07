@@ -8,6 +8,10 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
     useEffect(() => {
         onSetFilterByDebounce(filterByToEdit)
     }, [filterByToEdit])
+
+    useEffect(() => {
+        setFilterByToEdit(filterBy)
+    }, [filterBy])
     
 
     function handleChange({ target }) {
