@@ -93,23 +93,26 @@ function getDefaultFilter() {
 }
 
 
+
 // function getFilterFromSearchParams(searchParams) {
-//     const name = searchParams.get('name') || ''
-//     const inStock = searchParams.get('inStock') || ''
-//     const sortBy = searchParams.get('sortBy') || ''
-//     const labelsParam = searchParams.get('labels')
-//     const labels = labelsParam ? labelsParam.split(',') : []
-    
-//     return { name, inStock, labels, sortBy }
+//     const defaultFilter = getDefaultFilter()
+//     const filterBy = {}
+//     for (const field in defaultFilter) {
+//         filterBy[field] = searchParams.get(field) || ''
+//     }
+//     return filterBy
 // }
 
 function getFilterFromSearchParams(searchParams) {
-    const defaultFilter = getDefaultFilter()
-    const filterBy = {}
-    for (const field in defaultFilter) {
-        filterBy[field] = searchParams.get(field) || ''
-    }
-    return filterBy
+  const name = searchParams.get('name') || ''
+  const inStock = searchParams.get('inStock') || ''
+  const sortBy = searchParams.get('sortBy') || ''
+  let labels = searchParams.getAll('labels')
+  if (!labels || labels.length === 0) {
+    const labelsParam = searchParams.get('labels')
+    labels = labelsParam ? labelsParam.split(',').filter(Boolean) : []
+  }
+  return { name, inStock, labels, sortBy }
 }
 
 function _createToys() {
@@ -152,3 +155,4 @@ function _setNextPrevToyId(toy){
     return toy
 })
 }
+

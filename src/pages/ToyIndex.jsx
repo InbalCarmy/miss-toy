@@ -17,22 +17,18 @@ export function ToyIndex() {
 
     useEffect(() => {
         const URLfilter = toyService.getFilterFromSearchParams(searchParams)
-        // console.log('filterURL: ',URLfilter)
         setFilterBy(URLfilter)
-    }, [])
-
-    useEffect(() => {
         loadToys()
-        console.log('before:',getExistingProperties(filterBy));
-        console.log("before filterBy: ", filterBy);
-        setSearchParams(getExistingProperties(filterBy))
-        console.log("after filterBy: ", filterBy);
-        console.log('after:', getExistingProperties(filterBy));
-    },[filterBy])
+    }, [searchParams])
+
+    // useEffect(() => {
+    //     loadToys()
+    //     setSearchParams(getExistingProperties(filterBy))
+    // },[filterBy])
 
         
-    function onSetFilterBy(filterBy) {
-        setFilterBy(filterBy)
+    function onSetFilterBy(nextFilter) {
+        setSearchParams(getExistingProperties(nextFilter))
     }
 
     function onRemoveToy(toyId){
@@ -56,3 +52,6 @@ export function ToyIndex() {
     )
 
 }
+
+
+
