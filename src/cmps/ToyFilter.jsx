@@ -9,6 +9,11 @@ export function ToyFilter({ filterBy, onSetFilterBy}){
         onSetFilterByDebounce(filterByToEdit)
     }, [filterByToEdit])
     
+    // Keep local state in sync with external changes (e.g., URL -> Redux -> props)
+    useEffect(() => {
+        setFilterByToEdit(filterBy)
+    }, [filterBy])
+    
 
     function handleChange({ target }) {
         const field = target.name

@@ -58,17 +58,6 @@ export function debounce(func, delay) {
 }
 
 
-// export function getExistingProperties(obj) {
-//     const truthyObj = {}
-//     for (const key in obj) {
-//         const val = obj[key]
-//         if (val || typeof val === 'boolean') {
-//             truthyObj[key] = val
-//         }
-//     }
-//     return truthyObj
-// }
-
 export function getExistingProperties(obj) {
     const out = {}
     for (const key in obj) {
@@ -87,3 +76,5 @@ export function getExistingProperties(obj) {
     }
     return out
 }
+
+
