@@ -16,17 +16,11 @@ export function ToyIndex() {
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
 
     useEffect(() => {
-        const URLfilter = toyService.getFilterFromSearchParams(searchParams)
-        setFilterBy(URLfilter)
+        setFilterBy(toyService.getFilterFromSearchParams(searchParams))
         loadToys()
     }, [searchParams])
 
-    // useEffect(() => {
-    //     loadToys()
-    //     setSearchParams(getExistingProperties(filterBy))
-    // },[filterBy])
 
-        
     function onSetFilterBy(nextFilter) {
         setSearchParams(getExistingProperties(nextFilter))
     }
