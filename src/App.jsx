@@ -8,7 +8,7 @@ import { HomePage } from './pages/HomePage'
 import { ToyIndex } from './pages/ToyIndex'
 import { ToyEdit } from './pages/ToyEdit'
 import {UserMsg} from './cmps/UserMsg'
-import { ToyDetails } from './pages/toyDetails'
+import { ToyDetails } from './pages/ToyDetails'
 
 
 
